@@ -12,9 +12,7 @@ const uid = document.getElementById("uid").value.trim();
 const { error } = await supabase
   .from("users")
   .insert([
-    {
-      uid: uid
-    }
+    { uid: uid }
   ]);
 
 if(error){
