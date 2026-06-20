@@ -1,23 +1,11 @@
-const supabase = window.supabase.createClient(
-    "https://snwzkkruiopjahswrwos.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNud3pra3J1aW9wamFoc3dyd29zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE5NzUzMDIsImV4cCI6MjA5NzU1MTMwMn0.Db7MKZBE5m9IAIi2C3uCYY6KgMcWnltuR2hl4mSRV6Q"
-);
+alert("読み込み成功");
 
 const addBtn = document.getElementById("addBtn");
-const uidInput = document.getElementById("uid");
-const friends = document.getElementById("friends");
 
-const uid = document.getElementById("uid").value.trim();
-
-const { error } = await supabase
-  .from("users")
-  .insert([
-    { uid: uid }
-  ]);
-
-if(error){
-  alert("保存失敗: " + error.message);
-  return;
+if (addBtn) {
+    addBtn.onclick = () => {
+        alert("ボタン成功");
+    };
+} else {
+    alert("addBtnが見つかりません");
 }
-
-alert("保存成功");
