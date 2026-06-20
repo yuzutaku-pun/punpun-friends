@@ -1,30 +1,27 @@
-alert("A");
+const uidInput = document.getElementById("uid");
+const joinBtn = document.getElementById("joinBtn");
+const status = document.getElementById("status");
 
-const supabase = window.supabase.createClient(
-    "https://snwzkkruiopjahswrwos.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNud3pra3J1aW9wamFoc3dyd29zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE5NzUzMDIsImV4cCI6MjA5NzU1MTMwMn0.Db7MKZBE5m9IAIi2C3uCYY6KgMcWnltuR2hl4mSRV6Q"
-);
+joinBtn.onclick = () => {
 
-alert("B");
+    const uid = uidInput.value.trim();
 
-const addBtn = document.getElementById("addBtn");
-
-addBtn.onclick = async () => {
-
-    alert("C");
-
-    const { data, error } =
-        await supabase
-            .from("users")
-            .select("*");
-
-    alert("D");
-
-    if(error){
-        alert(error.message);
+    if (!uid) {
+        alert("UIDを入力");
         return;
     }
 
-    alert(JSON.stringify(data));
+    localStorage.setItem("uid", uid);
 
+    status.innerHTML = "🟢 オンライン";
 };
+
+const savedUID =
+localStorage.getItem("uid");
+
+if(savedUID){
+
+    uidInput.value = savedUID;
+
+    status.innerHTML = "🟢 オンライン";
+}
