@@ -1,0 +1,11 @@
+body{
+    margin:0;
+    background:#313338;
+    color:white;
+    font-family:-apple-system;
+}
+
+h1{
+    text-align:center;
+    margin-top:40px;
+}
