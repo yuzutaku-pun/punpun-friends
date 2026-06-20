@@ -1,76 +1,27 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-}
+const addBtn =
+document.getElementById("addBtn");
 
-body{
-    background:#313338;
-    color:white;
-    height:100vh;
-}
+const uidInput =
+document.getElementById("uid");
 
-.container{
-    display:flex;
-    height:100vh;
-}
+const friends =
+document.getElementById("friends");
 
-.sidebar{
-    width:90px;
-    background:#1e1f22;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    padding-top:20px;
-}
+addBtn.onclick = () => {
 
-.logo{
-    width:60px;
-    height:60px;
-    border-radius:50%;
-    background:#5865f2;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-weight:bold;
-}
+const uid =
+uidInput.value.trim();
 
-.main{
-    flex:1;
-    padding:20px;
-}
+if(!uid) return;
 
-.title{
-    font-size:32px;
-    font-weight:700;
-    margin-bottom:20px;
-}
+const div =
+document.createElement("div");
 
-.search{
-    display:flex;
-    gap:10px;
-    margin-bottom:20px;
-}
+div.className = "friend";
+div.textContent = uid;
 
-.search input{
-    flex:1;
-    padding:12px;
-    border:none;
-    border-radius:10px;
-}
+friends.appendChild(div);
 
-.search button{
-    padding:12px 20px;
-    border:none;
-    border-radius:10px;
-    background:#5865f2;
-    color:white;
-}
+uidInput.value = "";
 
-.friend{
-    background:#2b2d31;
-    padding:15px;
-    border-radius:12px;
-    margin-bottom:10px;
-}
+};
