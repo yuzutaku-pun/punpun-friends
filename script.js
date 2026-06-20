@@ -7,35 +7,19 @@ const addBtn = document.getElementById("addBtn");
 const uidInput = document.getElementById("uid");
 const friends = document.getElementById("friends");
 
-addBtn.onclick = async () => {
+const uid = document.getElementById("uid").value.trim();
 
-    const uid = uidInput.value.trim();
-
-    if (!uid) {
-        alert("UIDを入力してください");
-        return;
+const { error } = await supabase
+  .from("users")
+  .insert([
+    {
+      uid: uid
     }
+  ]);
 
-    const { error } = await supabase
-        .from("users")
-        .insert([
-            {
-                uid: uid
-            }
-        ]);
+if(error){
+  alert("保存失敗: " + error.message);
+  return;
+}
 
-    if (error) {
-        alert("保存失敗: " + error.message);
-        return;
-    }
-
-    alert("保存成功");
-
-    const div = document.createElement("div");
-    div.className = "friend";
-    div.textContent = uid;
-
-    friends.appendChild(div);
-
-    uidInput.value = "";
-};
+alert("保存成功");
